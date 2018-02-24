@@ -1,0 +1,44 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+.App-header {
+  background-color: #222;
+  padding: 20px;
+  color: white;
+}
+
+.App-title {
+  font-size: 1.5em;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+.navigation--link-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.navigation--link a {
+  color: white;
+  text-decoration: none;
+}
+
+.navigation--link .active {
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.container {
+  width: 90%;
+  margin: auto;
+}
+
+.theory--container {
+  border-top: .2em solid #222;
+  max-width: 500px;
+}

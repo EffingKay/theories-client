@@ -1,0 +1,1 @@
+export const HOST_API = process.env.HOST_API || 'https://vast-meadow-71975.herokuapp.com';
