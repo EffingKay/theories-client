@@ -1,6 +1,6 @@
 import * as actionTypes from '../../config/actionTypes';
 import { authentication } from '../../utils/authentication';
-import {fetchUser} from './user';
+import { fetchUser } from './user';
 
 export const registerRequest = (user) => ({
     type: actionTypes.REGISTER_REQUEST,
@@ -53,7 +53,7 @@ export const login = (username, password) => {
         authentication.login(username, password)
             .then(user => {
                 dispatch(fetchUser(user.user._id))                
-                dispatch(loginSuccess(user));
+                dispatch(loginSuccess(user));                
             })
             .catch(err => {
                 dispatch(loginFailure(err));

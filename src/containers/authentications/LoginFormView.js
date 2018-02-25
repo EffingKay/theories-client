@@ -1,9 +1,10 @@
 import React, {Component} from 'react';
-import LoginForm from '../../components/forms/LoginForm';
+import PropTypes from 'prop-types';
+import LoginForm from '../../components/authentications/LoginForm';
 import Aux from '../../utils/Aux';
 import {connect} from 'react-redux';
 import {login, authFailureReset} from '../../store/actions/authentication';
-import {Link} from 'react-router-dom';
+import {Link, withRouter} from 'react-router-dom';
 
 class LoginFormView extends Component {
     state = {
@@ -22,9 +23,13 @@ class LoginFormView extends Component {
 
     render () {  
         const {login, authError} = this.props;  
+        const redirect = () => this.props.history.push('/theories');        
         const submitHandler = e => {
             e.preventDefault();
             login(this.state.username, this.state.password);
+            setTimeout(() => {
+                if (!this.state.authError) redirect();
+            }, 150);
         }
 
         const changeUsernameHandler = (e) => {
@@ -63,5 +68,10 @@ const mapDispatchToProps = dispatch => {
     }
 }
 
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(LoginFormView));
 
-export default connect(mapStateToProps, mapDispatchToProps)(LoginFormView);
+LoginFormView.propTypes = {
+    authError: PropTypes.string,
+    login: PropTypes.func.isRequired,
+    errorReset: PropTypes.func
+}

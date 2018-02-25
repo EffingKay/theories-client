@@ -1,14 +1,19 @@
-import React, { Component } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import Header from './common/Header';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <Header />
-      </div>
-    );
-  }
-}
+const App = (props) => (
+  <div className="App">
+    <Header 
+      logout={props.logout}
+      loggedIn={props.loggedIn}  
+    />
+  </div>
+)
 
 export default App;
+
+App.propTypes = {
+  logout: PropTypes.func.isRequired,
+  loggedIn: PropTypes.bool.isRequired
+}

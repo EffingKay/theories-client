@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 const Theory = (props) => (
     <div className="theory--container">
     <p>{props.content}</p>
-    <p>{props.upvotes} likes</p>
+    <p className="theory--likes">{props.upvotes} likes</p>
     </div>
 );
 

@@ -23,5 +23,10 @@ const Theories = (props) => {
 export default Theories;
 
 Theories.propTypes = {
-    theories: PropTypes.objectOf(PropTypes.object)
+    theories: PropTypes.objectOf(PropTypes.shape({
+        key: PropTypes.number,
+        content: PropTypes.string,
+        upvotes: PropTypes.number,
+        theoryId: PropTypes.string
+    }))
 }

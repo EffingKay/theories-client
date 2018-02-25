@@ -1,16 +1,14 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-const Header = () => {
-    let loggedIn = !!JSON.parse(localStorage.getItem('user'));   
+const Header = (props) => {
+    const {loggedIn, logout} = props; 
     return (
         <header className='App-header'>
             <h1 className='App-title navigation--link'><Link to='/'>GOTHEORY</Link></h1>
             <nav>
                 <ul className='navigation--link-list'>
-                    {/* <li className='navigation--link'>
-                        <Link to='/'>home</Link>
-                    </li> */}
                     <li className='navigation--link'>
                         <Link to='/theories'>theories</Link>
                     </li>
@@ -20,7 +18,9 @@ const Header = () => {
                     </li> :
                     null}
                     <li className='navigation--link'>
-                        {!loggedIn ? <Link to='/login'>join</Link> : <button>logout</button>}
+                        {!loggedIn ? 
+                        <Link to='/login'>join</Link> : 
+                        <button onClick={logout}>Logout</button> }
                     </li> 
                 </ul>
             </nav>
@@ -29,3 +29,8 @@ const Header = () => {
 }
 
 export default Header;
+
+Header.propTypes = {
+    loggedIn: PropTypes.bool.isRequired,
+    logout: PropTypes.func.isRequired
+}

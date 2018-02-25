@@ -20,6 +20,7 @@ const authentication = (state = defaultState, action) => {
         } 
     case actionTypes.REGISTER_FAILURE:
         return {
+            loggedIn: false,            
             error: action.error
         }
     case actionTypes.LOGIN_REQUEST: 
@@ -34,10 +35,14 @@ const authentication = (state = defaultState, action) => {
         }
     case actionTypes.LOGIN_FAILURE:
         return {
+            loggedIn: false,            
             error: action.error
         }
     case actionTypes.LOGOUT:
-        return {}
+        return {
+            loggedIn: false,
+            error: undefined
+        }
     case actionTypes.FAILURE_ERROR_RESET:
         return {
             error: undefined

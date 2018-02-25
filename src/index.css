@@ -4,9 +4,12 @@ body {
   font-family: sans-serif;
 }
 
+#root {
+  border-top: 10px solid #222;
+}
+
 .App-header {
-  background-color: #222;
-  padding: 20px;
+  padding: 0 20px;
   color: white;
 }
 
@@ -24,7 +27,7 @@ body {
 }
 
 .navigation--link a {
-  color: white;
+  color: #222;
   text-decoration: none;
 }
 
@@ -34,11 +37,19 @@ body {
 }
 
 .container {
-  width: 90%;
+  padding: 20px;
+  padding-top: 0;
   margin: auto;
 }
 
 .theory--container {
   border-top: .2em solid #222;
   max-width: 500px;
+}
+
+textarea,
+input {
+  width: 100%;
+  max-width: 500px;
+  display: block;
 }
