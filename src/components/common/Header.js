@@ -17,10 +17,15 @@ const Header = (props) => {
                         <Link to='/add-theory'>add theory</Link>
                     </li> :
                     null}
+                    {loggedIn ?
+                    <li className='navigation--link'>
+                        <Link to='/profile'>profile</Link>
+                    </li> :
+                    null}
                     <li className='navigation--link'>
                         {!loggedIn ? 
                         <Link to='/login'>join</Link> : 
-                        <button onClick={logout}>Logout</button> }
+                        <a onClick={logout}>Logout</a> }
                     </li> 
                 </ul>
             </nav>

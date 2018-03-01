@@ -2,10 +2,12 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+  text-align: center;
+  background: #fafafa;
 }
 
 #root {
-  border-top: 10px solid #222;
+  border-top: 10px solid #1f00ef;
 }
 
 .App-header {
@@ -14,7 +16,10 @@ body {
 }
 
 .App-title {
-  font-size: 1.5em;
+  font-size: 4.5em;
+  /* border-bottom: 10px solid #222; */
+  width: 500px;
+  margin: auto;
 }
 
 .App-intro {
@@ -24,10 +29,29 @@ body {
 .navigation--link-list {
   list-style-type: none;
   padding: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
 
 .navigation--link a {
-  color: #222;
+  /* color: #222; */
+  color: #1f00ef;
+  text-decoration: none;
+  text-transform: uppercase;
+  padding: 0 .5em;
+  font-weight: bold;
+}
+
+.navigation--link a:hover {
+  /* font-weight: normal; */
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.App-header h1 a:hover {
+  font-weight: bold;
+  cursor: pointer;
   text-decoration: none;
 }
 
@@ -45,6 +69,12 @@ body {
 .theory--container {
   border-top: .2em solid #222;
   max-width: 500px;
+  margin: auto;
+  text-align: left;
+}
+
+.theory--likes-button {
+  float: right;
 }
 
 textarea,
@@ -52,4 +82,5 @@ input {
   width: 100%;
   max-width: 500px;
   display: block;
+  margin: auto;
 }
