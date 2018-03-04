@@ -10,13 +10,14 @@ class TheoriesView extends Component {
     }
 
     render() {
-        const { theories } = this.props;
-        return <Theories theories={theories} />
+        const { theories, loggedIn } = this.props;
+        return <Theories theories={theories} loggedIn={loggedIn} />
     }
 }
 
 const mapStateToProps = state => ({
     theories: state.theories.data,
+    loggedIn: state.authentication.loggedIn
 })
 
 const mapDispatchToProps = dispatch => {
