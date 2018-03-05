@@ -5,16 +5,13 @@ import { fetchUser } from '../../store/actions/user';
 
 class UserView extends Component {
     componentWillMount() {
-        console.log(JSON.parse(localStorage.getItem('user')).user._id)
         this.props.fetchUser(JSON.parse(localStorage.getItem('user')).user._id);
     }
 
     render(){
         const {user} = this.props;
-        console.log(user)
         return <UserInfo user={user} />
     }
-
 }
 
 const mapStateToProps = state => ({

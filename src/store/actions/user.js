@@ -20,7 +20,6 @@ export const fetchUser = (id) => (dispatch, getState) => {
 
     return fetchApiData(`/users/${id}`)
         .then(response => {
-            console.log('user success')
             dispatch(userSuccess(response));
         })
         .catch(error => {
