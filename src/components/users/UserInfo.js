@@ -12,6 +12,7 @@ const userInfo = (props) => {
                         content={theory.content} 
                         upvotes={theory.upvotes} 
                         theoryId={theory._id}
+                        loggedIn={true}                        
                         key={i} 
                     />
         }) :

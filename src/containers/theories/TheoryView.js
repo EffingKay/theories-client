@@ -5,6 +5,8 @@ import { updateUser } from '../../store/actions/user';
 import { connect } from 'react-redux';
 
 class TheoryView extends Component {
+    // better approach - when liked just change UI, do not send POST request 
+    // update in bulk when componentWillUnmount - less requests and no jumping/refresh in UI
     render() {
         const likeHandler = () => {
             let updatedLikedTheories = [...this.props.likedTheories];
@@ -13,12 +15,8 @@ class TheoryView extends Component {
                 updatedLikedTheories.splice(0, 0, this.props.theoryId);
                 updatedVotes = this.props.upvotes + 1;
             } else {
-                updatedVotes = this.props.upvotes - 1;
-                if (typeof(this.props.likedTheories[0]) === 'string') {
-                    updatedLikedTheories.splice(updatedLikedTheories.indexOf(this.props.theoryId), 1);
-                } else {
-                    updatedLikedTheories = this.props.likedTheories.filter(e => e._id !== this.props.theoryId);            
-                }
+                updatedLikedTheories = this.props.likedTheories.filter(e => e._id !== this.props.theoryId);   
+                updatedVotes = this.props.upvotes - 1;                
             }
             let userId = JSON.parse(localStorage.getItem('user')).user._id;            
             this.props.updateTheory(this.props.theoryId, {'upvotes': updatedVotes})
@@ -27,13 +25,7 @@ class TheoryView extends Component {
         }
 
         const wasLiked = () => {
-            // for some reason, liked is sometimes an array of theoryId strings
-            // and sometimes an array of theory objects
-            if (typeof(this.props.likedTheories[0]) === 'string') {
-                return this.props.likedTheories.includes(this.props.theoryId);
-            } else {
-                return this.props.likedTheories.filter(e => e._id === this.props.theoryId).length > 0;                
-            }
+            return this.props.likedTheories.filter(e => e._id === this.props.theoryId).length > 0;
         }
 
         return (

@@ -20,6 +20,7 @@ export const fetchUser = (id) => (dispatch, getState) => {
 
     return fetchApiData(`/users/${id}`)
         .then(response => {
+            console.log('user success')
             dispatch(userSuccess(response));
         })
         .catch(error => {
@@ -31,8 +32,8 @@ export const updateUser = (id, data) => (dispatch, getState) => {
     dispatch(userRequest());
 
     return putApiData(`/users/${id}`, data)
-        .then(response => {
-            dispatch(userSuccess(response));
+        .then( response => {
+            dispatch(userSuccess(response));            
         })
         .catch(error => {
             dispatch(userFailure(error));
