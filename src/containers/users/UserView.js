@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import UserInfo from '../../components/users/UserInfo';
 import { fetchUser } from '../../store/actions/user';
+import Aux from '../../utils/Aux';
 
 class UserView extends Component {
     componentWillMount() {
@@ -10,7 +11,14 @@ class UserView extends Component {
 
     render(){
         const {user} = this.props;
-        return <UserInfo user={user} />
+        return (
+            <Aux>
+                <h1>{user.username}</h1>
+                <button>theories</button>
+                <button>liked</button>
+                <UserInfo user={user} />
+            </Aux>
+        ) 
     }
 }
 

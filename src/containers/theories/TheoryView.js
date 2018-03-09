@@ -3,37 +3,51 @@ import Theory from '../../components/theories/Theory';
 import { updateTheory, fetchTheories } from '../../store/actions/theories';
 import { updateUser } from '../../store/actions/user';
 import { connect } from 'react-redux';
+import openSocket from 'socket.io-client';
+import { HOST_API } from '../../config/config';
 
 class TheoryView extends Component {
-    // better approach - when liked just change UI, do not send POST request 
-    // update in bulk when componentWillUnmount - less requests and no jumping/refresh in UI
-    // the updated should be for ALL theories, if here it'll make calls for every theory component (too many)
+    state = {
+        upvotes: this.props.upvotes,
+        liked: undefined
+    }
+
+    componentDidMount() {
+        this.setState({liked: this.props.likedTheories.filter(e => e._id === this.props.theoryId).length > 0});
+    }
+
     render() {
+        const socket = openSocket(HOST_API);
         const likeHandler = () => {
-            let updatedLikedTheories = [...this.props.likedTheories];
-            let updatedVotes;
-            if (!wasLiked()) {
+            let updatedVotes, 
+                updatedLikedTheories = [...this.props.likedTheories],
+                userId = JSON.parse(localStorage.getItem('user')).user._id;
+
+            if (!this.state.liked) {
                 updatedLikedTheories.splice(0, 0, this.props.theoryId);
-                updatedVotes = this.props.upvotes + 1;
+                updatedVotes = this.state.upvotes + 1;
             } else {
                 updatedLikedTheories = this.props.likedTheories.filter(e => e._id !== this.props.theoryId);   
-                updatedVotes = this.props.upvotes - 1;                
+                updatedVotes = this.state.upvotes - 1;                
             }
-            let userId = JSON.parse(localStorage.getItem('user')).user._id;            
-            this.props.updateTheory(this.props.theoryId, {'upvotes': updatedVotes})
-                .then(() => this.props.updateUser(userId, {'liked': updatedLikedTheories}) )
-                .then(() => this.props.fetchTheories());
-        }
 
-        const wasLiked = () => {
-            return this.props.likedTheories.filter(e => e._id === this.props.theoryId).length > 0;
+            const theory = {
+                id: this.props.theoryId,
+                body: {'upvotes': updatedVotes}
+            };
+            const user = {
+                id: userId,
+                body: {'liked': updatedLikedTheories}
+            }
+            socket.emit('liked', theory, user);
+            this.setState({upvotes: updatedVotes, liked: !this.state.liked});
         }
 
         return (
             <Theory
                 content={this.props.content}
-                upvotes={this.props.upvotes} 
-                liked={wasLiked()}
+                upvotes={this.state.upvotes} 
+                liked={this.state.liked}
                 likeHandler={likeHandler}
                 loggedIn={this.props.loggedIn}
             /> 

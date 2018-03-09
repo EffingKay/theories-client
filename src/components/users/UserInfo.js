@@ -4,7 +4,7 @@ import Aux from '../../utils/Aux';
 import {Link} from 'react-router-dom';
 
 const userInfo = (props) => {
-    const {username, theories, liked} = props && props.user;
+    const {theories, liked} = props && props.user;
 
     const theoriesList = theories && theories.length ?
         theories.slice(0).reverse().map((theory, i) => {
@@ -31,12 +31,10 @@ const userInfo = (props) => {
 
     return (
         <Aux>
-            <h1>{username}</h1>
             <h3>My theories:</h3>
             {theoriesList}
             <h3>Liked theories:</h3>
             {likedList}
-            <p style={{'color': '#1f00ef'}}>TODO: Make liked and mine a filter, don't show both</p>
         </Aux>
     );
 }

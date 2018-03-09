@@ -6,11 +6,20 @@ const Theory = (props) => {
         props.likeHandler();
     }
 
+    let likesText;
+    if (props.upvotes === 0) {
+        likesText = ':('
+    } else if (props.upvotes === 1) {
+        likesText = 'like'
+    } else {
+        likesText = 'likes'
+    }
+
     return (
         <div className="theory--container">
         <p>{props.content}</p>
         <p className="theory--likes">
-            {props.upvotes} likes 
+            {props.upvotes ? props.upvotes : null} {likesText} 
             { props.loggedIn ? 
             <button className="theory--likes-button" onClick={clickHandler}>
                 {props.liked ? 'betray' : 'like'}
