@@ -7,6 +7,7 @@ import { connect } from 'react-redux';
 class TheoryView extends Component {
     // better approach - when liked just change UI, do not send POST request 
     // update in bulk when componentWillUnmount - less requests and no jumping/refresh in UI
+    // the updated should be for ALL theories, if here it'll make calls for every theory component (too many)
     render() {
         const likeHandler = () => {
             let updatedLikedTheories = [...this.props.likedTheories];
