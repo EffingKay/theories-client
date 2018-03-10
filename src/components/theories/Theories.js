@@ -11,7 +11,8 @@ const Theories = (props) => {
             content={props.theories[key].content}
             upvotes={props.theories[key].upvotes} 
             theoryId={props.theories[key]._id} 
-            loggedIn={props.loggedIn} /> )
+            loggedIn={props.loggedIn} 
+            likeHandler={props.likeHandler} /> )
     : <h4>Fetching, fetching, fetching, always fetching... </h4>;
     return (
         <Aux>

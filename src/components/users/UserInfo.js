@@ -12,7 +12,7 @@ const userInfo = (props) => {
                         content={theory.content} 
                         upvotes={theory.upvotes} 
                         theoryId={theory._id}
-                        loggedIn={true}                        
+                        // loggedIn={true}                        
                         key={i} 
                     />
         }) :
@@ -24,7 +24,7 @@ const userInfo = (props) => {
                         content={like.content} 
                         upvotes={like.upvotes} 
                         theoryId={like._id} 
-                        loggedIn={true}
+                        // loggedIn={true}
                         key={i} />
         }) :
         <p>No liked theories so far, <Link to="/theories">go ahead and show some love</Link></p>

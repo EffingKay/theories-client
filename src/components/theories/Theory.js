@@ -2,10 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const Theory = (props) => {
-    const clickHandler = () => {
-        props.likeHandler();
-    }
-
     let likesText;
     if (props.upvotes === 0) {
         likesText = ':('
@@ -21,7 +17,7 @@ const Theory = (props) => {
         <p className="theory--likes">
             {props.upvotes ? props.upvotes : null} {likesText} 
             { props.loggedIn ? 
-            <button className="theory--likes-button" onClick={clickHandler}>
+            <button className="theory--likes-button" onClick={props.likeHandler}>
                 {props.liked ? 'betray' : 'like'}
             </button> :
             null }
