@@ -186,6 +186,7 @@ input {
   outline: none;
   font-size: 1em;
   box-shadow: 3px 3px;
+  box-sizing: border-box;
 }
 
 textarea {
@@ -245,5 +246,10 @@ input {
   .navigation--image {
     bottom: 50%;
     left: 31%;
+  }
+
+  h1 {
+    font-size: 1.3em;
+    margin-bottom: 1.5em;
   }
 }

@@ -5,7 +5,8 @@ export function authHeader() {
     if (user && user.token) {
         return { 
             'Authorization': 'Bearer ' + user.token,
-            'Content-Type' : 'application/json' 
+            'Content-Type' : 'application/json' ,
+            'Access-Control-Allow-Origin': '*',            
         };
     } else {
         return { 'Content-Type' : 'application/json' };
