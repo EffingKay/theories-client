@@ -6,7 +6,8 @@ export function authHeader() {
         return { 
             'Authorization': 'Bearer ' + user.token,
             'Content-Type' : 'application/json' ,
-            'Access-Control-Allow-Origin': '*',            
+            'Access-Control-Allow-Origin': '*',   
+            'Access-Control-Allow-Headers': '* ',           
         };
     } else {
         return { 'Content-Type' : 'application/json' };
