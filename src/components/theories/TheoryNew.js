@@ -7,10 +7,10 @@ const TheoryNewForm = (props) => (
         <form onSubmit={e => props.postTheoryHandler(e)}>
             <textarea 
                 onChange={e => props.changeHandler(e)}
-                placeholder="note to myself: maybe make this dialog? also, make it a class and add state" 
+                placeholder="Remember! The less likely, the better. Keep the legit theories for yourselves, please." 
                 autoFocus>
             </textarea>
-            <button type="submit">add</button>
+            <button className="auth-button" type="submit">add</button>
         </form>
     </div>
 )

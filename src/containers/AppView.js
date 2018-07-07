@@ -28,8 +28,7 @@ class AppView extends Component {
                     <App logout={logout} loggedIn={loggedIn} />
                     <div className='container'>
                         <Switch>
-                            <Route exact path='/' component={Homepage} />
-                            <Route path='/theories' component={TheoriesView} />
+                            <Route exact path='/' component={TheoriesView} />
                             <Route path='/login' component={LoginFormView} />
                             <Route path='/register' component={RegisterFormView} />
                             <PrivateRoute path='/add-theory' component={TheoryNewView} />

@@ -5,18 +5,34 @@ import { fetchUser } from '../../store/actions/user';
 import Aux from '../../utils/Aux';
 
 class UserView extends Component {
+    state = {
+        showLiked: false,
+    }
+
     componentWillMount() {
         this.props.fetchUser(JSON.parse(localStorage.getItem('user')).user._id);
     }
 
     render(){
         const {user} = this.props;
+        const clickHandler = (which) => this.setState(prevState => ({ showLiked: which==='mine' ? false : true }));
+
         return (
             <Aux>
-                <h1>{user.username}</h1>
-                <button>theories</button>
-                <button>liked</button>
-                <UserInfo user={user} />
+                <div className="profile-header">
+                    <h1>{user.username}</h1>
+                    <button 
+                        onClick={() => clickHandler('mine')} 
+                        className={this.state.showLiked ? 'profile-button' : 'profile-button profile-button--chosen'}>
+                        my theories
+                    </button>
+                    <button 
+                        onClick={() => clickHandler('like')} 
+                        className={!this.state.showLiked ? 'profile-button' : 'profile-button profile-button--chosen'}>
+                        liked
+                    </button>
+                </div>
+                <UserInfo user={user} showLiked={this.state.showLiked} />
             </Aux>
         ) 
     }

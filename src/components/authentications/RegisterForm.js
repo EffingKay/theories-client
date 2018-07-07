@@ -9,7 +9,7 @@ const RegisterForm = (props) => (
         <input type="password" onChange={ (e) => {props.changePasswordHandler(e)} }/>
         <label>Password Confirmation</label>
         <input type="password" onChange={ (e) => {props.changePasswordConfirmationHandler(e)} }/>
-        <input type="submit" value="Submit" />
+        <button type="submit" className="auth-button">REGISTER</button>
     </form>
 )
 

@@ -16,7 +16,8 @@ const Theories = (props) => {
     : <h4>Fetching, fetching, fetching, always fetching... </h4>;
     return (
         <Aux>
-            <h1>What others are saying</h1>
+            <h1>Share your theories with us.<br/>
+            The less likely, the better.</h1>
             {theories}
         </Aux>
     )

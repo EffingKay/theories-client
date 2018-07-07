@@ -16,12 +16,13 @@ const Theory = (props) => {
         <p>{props.content}</p>
         <p className="theory--likes">
             {props.upvotes ? props.upvotes : null} {likesText} 
-            { props.loggedIn ? 
+
+        </p>
+        { props.loggedIn && !props.liked ? 
             <button className="theory--likes-button" onClick={props.likeHandler}>
-                {props.liked ? 'betray' : 'like'}
+                like
             </button> :
             null }
-        </p>
         </div>
     );
 }

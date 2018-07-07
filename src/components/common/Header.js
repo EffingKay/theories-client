@@ -16,9 +16,6 @@ const Header = (props) => {
             </h1>
             <nav>
                 <ul className='navigation--link-list'>
-                    <li className='navigation--link'>
-                        <Link to='/theories'>theories</Link>
-                    </li>
                     {loggedIn ?
                     <li className='navigation--link'>
                         <Link to='/add-theory'>add theory</Link>
@@ -31,7 +28,7 @@ const Header = (props) => {
                     null}
                     <li className='navigation--link'>
                         {!loggedIn ? 
-                        <Link to='/login'>join</Link> : 
+                        <Link to='/login'>join / sign in</Link> : 
                         <a onClick={logout}>Logout</a> }
                     </li> 
                 </ul>

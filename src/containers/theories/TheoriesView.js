@@ -3,16 +3,11 @@ import PropTypes from 'prop-types';
 import Theories from '../../components/theories/Theories';
 import {connect} from 'react-redux';
 import {fetchTheories} from '../../store/actions/theories';
-import {fetchUser} from '../../store/actions/user';
-import openSocket from 'socket.io-client';
-import { HOST_API } from '../../config/config';
+import {fetchUser, updateUser} from '../../store/actions/user';
+// import openSocket from 'socket.io-client';
+// import { HOST_API } from '../../config/config';
 
 class TheoriesView extends Component {
-    state = {
-        likedTheories: this.props.likedTheories,
-        theories: this.props.theories,
-    }
-
     componentWillMount() {
         JSON.parse(localStorage.getItem('user'))
             ? this.props.fetchUser(JSON.parse(localStorage.getItem('user')).user._id)
@@ -21,43 +16,21 @@ class TheoriesView extends Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        console.log(nextProps)
         this.setState({...this.state, theories: nextProps.theories})
     }
 
     render() {
-        const socket = openSocket(HOST_API);                
-        const { theories, loggedIn } = this.props;
+        // const socket = openSocket(HOST_API);                
+        const { loggedIn, theories } = this.props;
 
         const likeHandler = (theoryId, liked, upvotes) => {
-            let updatedLikedTheories = [...this.state.likedTheories],
-                userId = JSON.parse(localStorage.getItem('user')).user._id,
-                updatedVotes;
-
-            if (!liked) {
-                updatedLikedTheories.splice(0, 0, theoryId);
-                updatedVotes = upvotes + 1;
-            } else {
-                updatedLikedTheories = this.state.likedTheories.filter(e => e._id !== theoryId);   
-                updatedVotes = upvotes - 1;                
-            }
-
-            const theoryUpdated = {
-                id: theoryId,
-                body: {'upvotes': updatedVotes}
-            };
-            const user = {
-                id: userId,
-                body: {'liked': updatedLikedTheories}
-            }
-            socket.emit('liked', theoryUpdated, user);
-            this.setState({likedTheories: updatedLikedTheories});
+            console.log(theoryId, liked, upvotes)
+            // socket.emit('liked', theoryUpdated, user);
         }
 
         return <Theories 
-                    theories={this.state.theories} 
+                    theories={theories} 
                     loggedIn={loggedIn} 
-                    likedTheories={this.state.likedTheories} 
                     likeHandler={likeHandler}
                 />
     }
@@ -67,13 +40,13 @@ const mapStateToProps = state => ({
     theories: state.theories.data,
     user: state.user && state.user.data,
     loggedIn: state.authentication.loggedIn,
-    likedTheories: state.user && state.user.data ? state.user.data.liked : [],    
 })
 
 const mapDispatchToProps = dispatch => {
     return {
         fetchTheories: () => dispatch(fetchTheories()),
-        fetchUser: (id) => dispatch(fetchUser(id))        
+        fetchUser: (id) => dispatch(fetchUser(id)),
+        updateUser: (id, data) => dispatch(updateUser(id, data)),        
     }
 }
 

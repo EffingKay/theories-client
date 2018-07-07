@@ -19,7 +19,7 @@ const LoginForm = (props) => (
             onChange={(e) => {props.changePasswordHandler(e)} }
         />
 
-        <input type="submit" value="Login" />
+        <button type="submit" className="auth-button">LOGIN</button>
     </form>
 )
 
