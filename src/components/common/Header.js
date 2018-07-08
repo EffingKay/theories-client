@@ -29,7 +29,7 @@ const Header = (props) => {
                     <li className='navigation--link'>
                         {!loggedIn ? 
                         <Link to='/login'>join / sign in</Link> : 
-                        <a onClick={logout}>Logout</a> }
+                        <a href="#" onClick={logout}>Logout</a> }
                     </li> 
                 </ul>
             </nav>

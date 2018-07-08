@@ -25,7 +25,7 @@ class TheoryView extends Component {
  
     render() {
         const likeHandler = () => {
-            // this.props.likeHandler(this.props.theoryId, this.state.liked, this.state.upvotes);
+            this.props.updateUsersLiked(this.props.theoryId);
             if (!this.state.liked) {
                 this.setState(prevState => ({upvotes: prevState.upvotes + 1, liked: !prevState.liked, didUpvote: true}));
             }

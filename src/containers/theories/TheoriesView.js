@@ -8,6 +8,11 @@ import {fetchUser, updateUser} from '../../store/actions/user';
 // import { HOST_API } from '../../config/config';
 
 class TheoriesView extends Component {
+    state = {
+        likedTheories: [],
+        userId: undefined,
+    }
+
     componentWillMount() {
         JSON.parse(localStorage.getItem('user'))
             ? this.props.fetchUser(JSON.parse(localStorage.getItem('user')).user._id)
@@ -15,23 +20,27 @@ class TheoriesView extends Component {
             : this.props.fetchTheories();         
     }
 
-    componentWillReceiveProps(nextProps) {
-        this.setState({...this.state, theories: nextProps.theories})
+    componentWillUnmount() {
+        const userId = JSON.parse(localStorage.getItem('user')).user._id;
+        const newLiked = [...this.props.user.liked].concat(this.state.likedTheories);
+        if (userId) this.props.updateUser(userId, {liked: newLiked});
     }
 
     render() {
         // const socket = openSocket(HOST_API);                
         const { loggedIn, theories } = this.props;
 
-        const likeHandler = (theoryId, liked, upvotes) => {
-            console.log(theoryId, liked, upvotes)
-            // socket.emit('liked', theoryUpdated, user);
+        const updateUsersLiked = (theoryId) => {
+            console.log(theoryId);
+            this.setState(previousState => ({
+                likedTheories: [...previousState.likedTheories, theoryId]
+            }));
         }
 
         return <Theories 
                     theories={theories} 
                     loggedIn={loggedIn} 
-                    likeHandler={likeHandler}
+                    updateUsersLiked={updateUsersLiked}
                 />
     }
 }

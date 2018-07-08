@@ -150,7 +150,7 @@ a {
   border: .15em solid black;
   border-radius: 5px;
   position: absolute;
-  bottom: -.5em;
+  bottom: -1em;
   right: 2em;
   font-size: .8em;
   text-transform: uppercase;
@@ -164,7 +164,7 @@ a {
   border: .15em solid black;
   border-radius: 5px;
   position: absolute;
-  bottom: -.5em;
+  bottom: -1em;
   right: 7em;
   font-size: .8em;
   text-transform: uppercase;
@@ -210,7 +210,7 @@ input {
   box-shadow: 2px 2px;
   transition: all .2s ease-out;
   margin-top: 1em;
-  outline: none;
+  /* outline: none; */
 }
 
 .auth-button:hover,
@@ -218,6 +218,11 @@ input {
   background: rgb(49, 205, 212);
   cursor: pointer;
   box-shadow: 4px 4px;
+}
+
+.auth-error {
+  background: #ffea4b;
+  padding: .2em 0;
 }
 
 .profile-header h1 {
@@ -233,6 +238,16 @@ input {
 
 .profile-button--chosen {
   background: rgb(49, 205, 212);  
+}
+
+
+@keyframes rotate {
+  from {transform: rotate(0deg);}
+  to {transform: rotate(360deg);}
+}
+
+.loader--head {
+  animation: rotate 900ms infinite;
 }
 
 @media screen and (max-width: 800px) {

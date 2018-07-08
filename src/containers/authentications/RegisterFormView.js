@@ -51,7 +51,7 @@ class RegisterFormView extends Component {
 
         return (
             <Aux>
-                {authError ? <h2>{authError}</h2> : null}
+                {authError ? <h2 className="auth-error">{authError}</h2> : null}
                 <h1>Register</h1>
                 <RegisterForm 
                     register={register}

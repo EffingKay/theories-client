@@ -12,8 +12,8 @@ const Theories = (props) => {
             upvotes={props.theories[key].upvotes} 
             theoryId={props.theories[key]._id} 
             loggedIn={props.loggedIn} 
-            likeHandler={props.likeHandler} /> )
-    : <h4>Fetching, fetching, fetching, always fetching... </h4>;
+            updateUsersLiked={props.updateUsersLiked} /> )
+    : <img className="loader--head" src="https://media.vanityfair.com/photos/595673b12ee85d681bad48ef/master/w_300,c_limit/08.png" />;
     return (
         <Aux>
             <h1>Share your theories with us.<br/>
