@@ -16,10 +16,7 @@ class TheoryView extends Component {
 
     componentWillUnmount() {
         if (this.state.didUpvote) {
-            this.props.updateTheory(this.props.theoryId, {upvotes: this.props.upvotes + 1});   
-            // const newLiked = [...this.props.likedTheories];
-            // newLiked.push(this.props.theoryId);
-            // this.props.updateUser(this.props.user._id, {liked: newLiked})  
+            this.props.updateTheory(this.props.theoryId, {upvotes: this.props.upvotes + 1});    
         }
     }
  

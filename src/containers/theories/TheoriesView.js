@@ -4,8 +4,6 @@ import Theories from '../../components/theories/Theories';
 import {connect} from 'react-redux';
 import {fetchTheories} from '../../store/actions/theories';
 import {fetchUser, updateUser} from '../../store/actions/user';
-// import openSocket from 'socket.io-client';
-// import { HOST_API } from '../../config/config';
 
 class TheoriesView extends Component {
     state = {
@@ -27,7 +25,6 @@ class TheoriesView extends Component {
     }
 
     render() {
-        // const socket = openSocket(HOST_API);                
         const { loggedIn, theories } = this.props;
 
         const updateUsersLiked = (theoryId) => {

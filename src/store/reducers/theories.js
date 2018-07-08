@@ -29,7 +29,6 @@ const theories = (state = defaultState, action) => {
             error: action.error
         }
     case actionTypes.THEORIES_POST_SUCCESS:
-        // const data = { ...action.data};
         return {
             ...state,
             data,

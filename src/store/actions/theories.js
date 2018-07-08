@@ -44,7 +44,6 @@ export const postTheory = (data) => (dispatch, getState) => {
     .then(response => {
         dispatch(theoryPostSucces(response));
     })
-    // .then(fetchTheories())
     .catch(error => {
         dispatch(theorypostFailure(error));
     })

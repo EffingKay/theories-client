@@ -30,7 +30,6 @@ const userInfo = (props) => {
     const content = !showLiked ? theoriesList : likedList;
     return (
         <Aux>
-            {/* <h3>{showLiked ? 'Liked' : 'My'} theories:</h3> */}
             { content }
         </Aux>
     );
