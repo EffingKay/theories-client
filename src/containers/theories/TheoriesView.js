@@ -19,9 +19,11 @@ class TheoriesView extends Component {
     }
 
     componentWillUnmount() {
-        const userId = JSON.parse(localStorage.getItem('user')).user._id;
-        const newLiked = [...this.props.user.liked].concat(this.state.likedTheories);
-        if (userId) this.props.updateUser(userId, {liked: newLiked});
+        if (JSON.parse(localStorage.getItem('user'))) {
+            const userId = JSON.parse(localStorage.getItem('user')).user._id;
+            const newLiked = [...this.props.user.liked].concat(this.state.likedTheories);
+            if (userId) this.props.updateUser(userId, {liked: newLiked});
+        }
     }
 
     render() {
