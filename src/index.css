@@ -252,4 +252,8 @@ input {
     font-size: 1.3em;
     margin-bottom: 1.5em;
   }
+
+  .theory--container > p:first-child {
+    font-size: 1.1em;
+  }
 }
