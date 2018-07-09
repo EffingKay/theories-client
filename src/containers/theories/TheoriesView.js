@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import Cookies from 'js-cookie';
 import Theories from '../../components/theories/Theories';
 import {connect} from 'react-redux';
 import {fetchTheories} from '../../store/actions/theories';
@@ -8,21 +9,21 @@ import {fetchUser, updateUser} from '../../store/actions/user';
 class TheoriesView extends Component {
     state = {
         likedTheories: [],
-        userId: undefined,
     }
 
     componentWillMount() {
-        JSON.parse(localStorage.getItem('user'))
-            ? this.props.fetchUser(JSON.parse(localStorage.getItem('user')).user._id)
-                .then(() => this.props.fetchTheories()) 
-            : this.props.fetchTheories();         
+        if (Cookies.get('userId')) {
+            this.props.fetchUser(Cookies.get('userId'))
+                .then(() => this.props.fetchTheories());
+        } else {
+            this.props.fetchTheories();    
+        }   
     }
 
     componentWillUnmount() {
-        if (JSON.parse(localStorage.getItem('user'))) {
-            const userId = JSON.parse(localStorage.getItem('user')).user._id;
+        if (Cookies.get('userId') && this.state.likedTheories.length) {
             const newLiked = [...this.props.user.liked].concat(this.state.likedTheories);
-            if (userId) this.props.updateUser(userId, {liked: newLiked});
+            this.props.updateUser(Cookies.get('userId'), {liked: newLiked});
         }
     }
 
@@ -30,7 +31,6 @@ class TheoriesView extends Component {
         const { loggedIn, theories } = this.props;
 
         const updateUsersLiked = (theoryId) => {
-            console.log(theoryId);
             this.setState(previousState => ({
                 likedTheories: [...previousState.likedTheories, theoryId]
             }));

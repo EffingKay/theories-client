@@ -1,10 +1,12 @@
+import Cookies from 'js-cookie';
+
 export function authHeader() {
     // return authorization header with jwt token
-    let user = JSON.parse(localStorage.getItem('user'));
+    let token = Cookies.get('token');
  
-    if (user && user.token) {
+    if (token) {
         return { 
-            'Authorization': 'Bearer ' + user.token,
+            'Authorization': 'Bearer ' + token,
             'Content-Type' : 'application/json',       
         };
     } else {

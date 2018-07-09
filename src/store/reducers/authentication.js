@@ -1,6 +1,7 @@
 import * as actionTypes from '../../config/actionTypes';
+import Cookies from 'js-cookie';
 
-let loggedIn = !!JSON.parse(localStorage.getItem('user'));
+let loggedIn = !!Cookies.get('userId');
 const defaultState = { 
     loggedIn: loggedIn,
     error: undefined 

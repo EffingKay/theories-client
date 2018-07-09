@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
+import Cookies from 'js-cookie';
 import {postTheory, fetchTheories} from '../../store/actions/theories';
 import {connect} from 'react-redux';
 import {withRouter} from "react-router-dom";
@@ -13,7 +14,7 @@ class TheoryNew extends Component {
     }
 
     componentDidMount() {
-        this.setState({user: JSON.parse(localStorage.getItem('user')).user._id});
+        this.setState({user: Cookies.get('userId')});
     }
 
     render() {

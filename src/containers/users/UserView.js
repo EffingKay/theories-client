@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
+import Cookies from 'js-cookie';
 import UserInfo from '../../components/users/UserInfo';
 import { fetchUser } from '../../store/actions/user';
 import Aux from '../../utils/Aux';
@@ -10,7 +11,7 @@ class UserView extends Component {
     }
 
     componentWillMount() {
-        this.props.fetchUser(JSON.parse(localStorage.getItem('user')).user._id);
+        this.props.fetchUser(Cookies.get('userId'));
     }
 
     render(){

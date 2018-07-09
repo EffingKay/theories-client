@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
+import Cookies from 'js-cookie';
 import PrivateRoute from '../utils/PrivateRoute';
 import Aux from '../utils/Aux';
 import App from '../components/App';
@@ -15,8 +16,8 @@ import { connect } from 'react-redux';
 
 class AppView extends Component {
     componentDidMount() {
-        let user = JSON.parse(localStorage.getItem('user'));
-        if (user) this.props.fetchUser(user.user._id);
+        let userId = Cookies.get('userId');
+        if (userId) this.props.fetchUser(userId);
     }
 
     render() {
