@@ -4,7 +4,6 @@ import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 import PrivateRoute from '../utils/PrivateRoute';
 import Aux from '../utils/Aux';
 import App from '../components/App';
-import Homepage from '../components/pages/Homepage';
 import TheoriesView from './theories/TheoriesView';
 import LoginFormView from './authentications/LoginFormView';
 import RegisterFormView from './authentications/RegisterFormView';
