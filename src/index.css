@@ -53,6 +53,26 @@ a {
   bottom: -50%;
   left: -30%;
   transition: all 300ms;
+  pointer-events: none;
+}
+
+.twitter {
+  position: absolute;
+  right: -15px;
+  top: 50%;
+  margin-top: -12px;
+  height: 1.5em;
+  top: 100%;
+  border: 1px solid black;
+  border-radius: 5px;
+  box-shadow: 2px 2px;
+  right: -0.5em;
+  background: white;
+  transition: all 300ms;
+}
+
+.twitter img {
+  height: 100%;
 }
 
 .App-title a {
@@ -83,17 +103,18 @@ a {
   font-weight: bold;
   border: 0.1em solid #333;
   border-radius: 5px;
-  box-shadow: 2px 2px;
+  box-shadow: 3px 3px rgb(49, 205, 212);
   margin: 0.5em;
   background: transparent;
   transition: all .2s;
 }
 
 .navigation--link a:hover,
-.theory--likes-button:hover {
+.theory--likes-button:hover,
+.twitter:hover {
   /* font-weight: normal; */
   cursor: pointer;
-  box-shadow: 4px 4px;
+  box-shadow: 4px 4px black;
   background: rgb(49, 205, 212);
 }
 
@@ -150,7 +171,7 @@ a {
   font-size: .8em;
   text-transform: uppercase;
   padding: .3em 1em;
-  box-shadow: 2px 2px;
+  box-shadow: 2px 2px rgb(49, 205, 212);;
   transition: all .2s ease-out;
 }
 
@@ -167,7 +188,7 @@ a {
   margin: 0;
   font-family: sans-serif;
   /* box-shadow: 2px 2px; */
-  background: rgb(49, 205, 212);  
+  /* background: rgb(49, 205, 212);   */
 }
 
 textarea,
@@ -180,8 +201,14 @@ input {
   border-radius: 10px;
   outline: none;
   font-size: 1em;
-  box-shadow: 3px 3px;
+  box-shadow: 3px 3px rgb(49, 205, 212);
   box-sizing: border-box;
+  transition: box-shadow 300ms;
+}
+
+textarea:focus,
+input:focus {
+  box-shadow: 3px 3px black;
 }
 
 textarea {
@@ -202,7 +229,7 @@ input {
   font-size: 1.2em;
   text-transform: uppercase;
   padding: .3em 1em;
-  box-shadow: 2px 2px;
+  box-shadow: 3px 3px rgb(49, 205, 212);
   transition: all .2s ease-out;
   margin-top: 1em;
 }
@@ -211,7 +238,7 @@ input {
 .profile-button:hover {
   background: rgb(49, 205, 212);
   cursor: pointer;
-  box-shadow: 4px 4px;
+  box-shadow: 4px 4px black;
 }
 
 .auth-error {
@@ -231,7 +258,8 @@ input {
 }
 
 .profile-button--chosen {
-  background: rgb(49, 205, 212);  
+  background: rgb(49, 205, 212);
+  box-shadow: 2px 2px black;  
 }
 
 
