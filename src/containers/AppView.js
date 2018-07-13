@@ -10,6 +10,8 @@ import LoginFormView from './authentications/LoginFormView';
 import RegisterFormView from './authentications/RegisterFormView';
 import TheoryNewView from './theories/TheoryNewView';
 import UserView from './users/UserView';
+import SiteInfo from '../components/common/Info';
+import Privacy from '../components/common/Privacy';
 import { fetchUser } from '../store/actions/user';
 import { logout } from '../store/actions/authentication';
 import { connect } from 'react-redux';
@@ -33,6 +35,8 @@ class AppView extends Component {
                             <Route path='/register' component={RegisterFormView} />
                             <PrivateRoute path='/add-theory' component={TheoryNewView} />
                             <PrivateRoute path='/profile' component={UserView} />
+                            <Route path="/info-and-legal" component={SiteInfo} />
+                            <Route path="/privacy" component={Privacy} />
                             <Redirect from='*' to="/" />
                         </Switch>
                     </div>

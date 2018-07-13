@@ -26,7 +26,7 @@ const Theories = (props) => {
     
     return (
         <Aux>
-            <h1>Share your theories with us.<br/>
+            <h1>GoT final season predictions?<br/>
             The less likely, the better.</h1>
             {theories}
         </Aux>

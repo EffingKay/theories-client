@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import Contact from './ContactLinks';
 const randomHeadNumber = Math.floor(Math.random() * Math.floor(6)) + 1;
 const randomHead = require(`../../assets/images/0${randomHeadNumber}.png`);
 
@@ -16,6 +17,7 @@ const Header = (props) => {
                 alt='title--danny'
                 src={randomHead} />
             </h1>
+            <Contact />
             <nav>
                 <ul className='navigation--link-list'>
                     {loggedIn ?

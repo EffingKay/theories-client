@@ -1,16 +1,27 @@
 @import url('https://fonts.googleapis.com/css?family=Playfair+Display');
 
+@keyframes rotate {
+  from {transform: rotate(0deg);}
+  to {transform: rotate(360deg);}
+}
+
+:root {
+	--grey: #222;
+	--blue: rgb(49, 205, 212);
+  }
+
+
 body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
   text-align: center;
   background: #fafafa;
-  color: #222;
+  color: var(--grey);
 }
 
 a {
-  color: rgb(49, 205, 212);    
+  color: var(--blue);    
 }
 
 #root {
@@ -19,7 +30,6 @@ a {
 
 .App-header {
   padding: 0 20px;
-  color: white;
   display: flex;
   justify-content: space-around;
   flex-direction: column;
@@ -52,7 +62,7 @@ a {
   position: absolute;
   bottom: -50%;
   left: -30%;
-  transition: all 300ms;
+  transition: all 500ms;
   pointer-events: none;
 }
 
@@ -63,7 +73,7 @@ a {
   margin-top: -12px;
   height: 1.5em;
   top: 100%;
-  border: 1px solid black;
+  border: 1px solid var(--grey);
   border-radius: 5px;
   box-shadow: 2px 2px;
   right: -0.5em;
@@ -103,7 +113,7 @@ a {
   font-weight: bold;
   border: 0.1em solid #333;
   border-radius: 5px;
-  box-shadow: 3px 3px rgb(49, 205, 212);
+  box-shadow: 3px 3px var(--blue);
   margin: 0.5em;
   background: transparent;
   transition: all .2s;
@@ -114,8 +124,8 @@ a {
 .twitter:hover {
   /* font-weight: normal; */
   cursor: pointer;
-  box-shadow: 4px 4px black;
-  background: rgb(49, 205, 212);
+  box-shadow: 4px 4px var(--grey);
+  background: var(--blue);
 }
 
 .App-header h1 a:hover {
@@ -136,7 +146,7 @@ a {
 }
 
 .theory--container {
-  /* border-top: .2em solid #222; */
+  /* border-top: .2em solid var(--grey); */
   max-width: 500px;
   margin: 0 auto 2em;
   text-align: left;
@@ -163,7 +173,7 @@ a {
 
 .theory--likes-button {
   background: white;
-  border: .15em solid black;
+  border: .15em solid var(--grey);
   border-radius: 5px;
   position: absolute;
   bottom: -1em;
@@ -171,13 +181,13 @@ a {
   font-size: .8em;
   text-transform: uppercase;
   padding: .3em 1em;
-  box-shadow: 2px 2px rgb(49, 205, 212);;
+  box-shadow: 2px 2px var(--blue);;
   transition: all .2s ease-out;
 }
 
 .theory--likes {
   background: white;
-  border: .15em solid black;
+  border: .15em solid var(--grey);
   border-radius: 5px;
   position: absolute;
   bottom: -1em;
@@ -188,7 +198,7 @@ a {
   margin: 0;
   font-family: sans-serif;
   /* box-shadow: 2px 2px; */
-  /* background: rgb(49, 205, 212);   */
+  /* background: var(--blue);   */
 }
 
 textarea,
@@ -197,18 +207,18 @@ input {
   max-width: 500px;
   display: block;
   margin: auto;
-  border: .2em solid black;
+  border: .2em solid var(--grey);
   border-radius: 10px;
   outline: none;
   font-size: 1em;
-  box-shadow: 3px 3px rgb(49, 205, 212);
+  box-shadow: 3px 3px var(--blue);
   box-sizing: border-box;
   transition: box-shadow 300ms;
 }
 
 textarea:focus,
 input:focus {
-  box-shadow: 3px 3px black;
+  box-shadow: 3px 3px var(--grey);
 }
 
 textarea {
@@ -224,21 +234,21 @@ input {
 .auth-button,
 .profile-button {
   background: white;
-  border: .15em solid black;
+  border: .15em solid var(--grey);
   border-radius: 5px;
   font-size: 1.2em;
   text-transform: uppercase;
   padding: .3em 1em;
-  box-shadow: 3px 3px rgb(49, 205, 212);
+  box-shadow: 3px 3px var(--blue);
   transition: all .2s ease-out;
   margin-top: 1em;
 }
 
 .auth-button:hover,
 .profile-button:hover {
-  background: rgb(49, 205, 212);
+  background: var(--blue);
   cursor: pointer;
-  box-shadow: 4px 4px black;
+  box-shadow: 4px 4px var(--grey);
 }
 
 .auth-error {
@@ -258,14 +268,8 @@ input {
 }
 
 .profile-button--chosen {
-  background: rgb(49, 205, 212);
-  box-shadow: 2px 2px black;  
-}
-
-
-@keyframes rotate {
-  from {transform: rotate(0deg);}
-  to {transform: rotate(360deg);}
+  background: var(--blue);
+  box-shadow: 2px 2px var(--grey);  
 }
 
 .loader--heads {
@@ -283,6 +287,26 @@ input {
   max-width: 100%;
 }
 
+.site-info {
+  width: 90%;
+  max-width: 550px;
+  margin: 0 auto;
+}
+
+.top-contact {
+  margin-left: 33%;
+  display: block;
+}
+
+.top-contact a {
+  padding: 0.2em 0.5em;
+  display: inline-block;
+  text-decoration: none;
+  border: .08em solid;
+  border-radius: 6px;
+  margin: 0.2em .3em .4em 0;
+}
+
 @media screen and (max-width: 800px) {
   .App-header {
     font-size: .7em;
@@ -296,6 +320,10 @@ input {
     left: 31%;
   }
 
+  .navigation--link-list .navigation--link a {
+    font-size: 1.3em;
+  }
+
   h1 {
     font-size: 1.3em;
     margin-bottom: 1.5em;
@@ -304,4 +332,15 @@ input {
   .theory--container > p:first-child {
     font-size: 1.1em;
   }
+
+  .top-contact {
+    margin: 0;
+    font-size: 1.5em;
+  }
 }
+
+@media screen and (max-width: 400px) {
+  .navigation--link-list .navigation--link a {
+    font-size: 1em;
+  }
+}  
