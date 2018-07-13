@@ -2,6 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Aux from '../../utils/Aux';
 import TheoryView from '../../containers/theories/TheoryView';
+import Sansa from '../../assets/images/03.png';
+import Brienne from '../../assets/images/04.png';
+import Jamie from '../../assets/images/05.png';
 
 const Theories = (props) => {
     const theories = props.theories
@@ -13,7 +16,14 @@ const Theories = (props) => {
             theoryId={props.theories[key]._id} 
             loggedIn={props.loggedIn} 
             updateUsersLiked={props.updateUsersLiked} /> )
-    : <img className="loader--head" src="https://media.vanityfair.com/photos/595673b12ee85d681bad48ef/master/w_300,c_limit/08.png" />;
+    : (
+        <div className="loader--heads">
+            {/* <div><img className="loader--head" src={Sansa} /></div>
+            <div><img className="loader--head" src={Jamie} /></div> */}
+            <div><img className="loader--head" src={Brienne} /></div>
+        </div>
+    );
+    
     return (
         <Aux>
             <h1>Share your theories with us.<br/>

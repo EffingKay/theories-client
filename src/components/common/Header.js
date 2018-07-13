@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+const randomHeadNumber = Math.floor(Math.random() * Math.floor(6)) + 1;
+const randomHead = require(`../../assets/images/0${randomHeadNumber}.png`);
 
 const Header = (props) => {
     const {loggedIn, logout} = props; 
@@ -12,7 +14,7 @@ const Header = (props) => {
             <img 
                 className='App-title navigation--image' 
                 alt='title--danny'
-                src='https://s-media-cache-ak0.pinimg.com/originals/53/09/2c/53092c0ae9b4e48fb639af156bcca744.png' />
+                src={randomHead} />
             </h1>
             <nav>
                 <ul className='navigation--link-list'>

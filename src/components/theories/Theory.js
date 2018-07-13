@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import twitterIcon from '../../assets/icons/twitter-icon.png'
 
 const Theory = (props) => {
     let likesText;
@@ -10,19 +11,18 @@ const Theory = (props) => {
     } else {
         likesText = 'likes'
     }
-    const twitterUrl = props.content.length < 200 ?
-        `https://twitter.com/intent/tweet?&text=${props.content}&via=effingkay` :
-        `https://twitter.com/intent/tweet?&text=${props.content.slice(0, 200)}...&via=effingkay`;
+    const twitterContent = props.content.length < 200 ? props.content : `${props.content.slice(0, 200)}...`;
+    const twitterUrl = `https://twitter.com/intent/tweet?&text=${twitterContent}&via=effingkay`;
     const twitterButton = <a 
         className="twitter" 
         href={twitterUrl}
         target="_blank" 
         title="Tweet" 
         onClick={() => {
-            window.open('https://twitter.com/intent/tweet?text=' + encodeURIComponent(`${props.content.slice(0, 200)}... via @EffingKay`));
+            window.open('https://twitter.com/intent/tweet?text=' + encodeURIComponent(`${twitterContent} via @EffingKay`));
             return false;
         }}>
-            <img alt="Tweet" src="https://cdn2.iconfinder.com/data/icons/social-media-outline-1/32/twitter_social_media_online-512.png" />
+            <img alt="Tweet" src={twitterIcon} />
         </a>
     
 
