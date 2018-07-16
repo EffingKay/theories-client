@@ -290,11 +290,19 @@ input {
 .site-info {
   width: 90%;
   max-width: 550px;
-  margin: 0 auto;
+  margin: 2em auto 0;
+}
+
+.site-info p {
+  font-size: .8em;  
+}
+
+p.about-site {
+  font-size: 1em;
 }
 
 .top-contact {
-  margin-left: 33%;
+  margin-left: 33.5%;
   display: block;
 }
 
@@ -302,9 +310,25 @@ input {
   padding: 0.2em 0.5em;
   display: inline-block;
   text-decoration: none;
-  border: .08em solid;
-  border-radius: 6px;
   margin: 0.2em .3em .4em 0;
+  font-size: 0.85em;
+}
+
+.theories-buttons {
+  color: var(--blue);
+  border: 2px solid;
+  border-radius: 6px;  
+  box-shadow: 2px 2px;
+  background: transparent;
+  font-size: 1em;
+  margin: 0 .3em 1em;
+  outline-color: var(--blue);
+  transition: all 300ms;
+} 
+
+.theories-buttons:hover {
+  cursor: pointer;
+  box-shadow: 4px 4px var(--grey);
 }
 
 @media screen and (max-width: 800px) {
@@ -322,6 +346,10 @@ input {
 
   .navigation--link-list .navigation--link a {
     font-size: 1.3em;
+  }
+
+  .site-info .navigation--link-list .navigation--link a {
+    font-size: 1em;
   }
 
   h1 {

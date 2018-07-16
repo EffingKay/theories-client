@@ -20,11 +20,14 @@ const Header = (props) => {
             <Contact />
             <nav>
                 <ul className='navigation--link-list'>
-                    {loggedIn ?
+                <li className='navigation--link'>
+                        <Link to='/add-theory'>add theory</Link>
+                    </li>
+                    {/* {loggedIn ?
                     <li className='navigation--link'>
                         <Link to='/add-theory'>add theory</Link>
                     </li> :
-                    null}
+                    null} */}
                     {loggedIn ?
                     <li className='navigation--link'>
                         <Link to='/profile'>profile</Link>
@@ -33,7 +36,7 @@ const Header = (props) => {
                     <li className='navigation--link'>
                         {!loggedIn ? 
                         <Link to='/login'>join / sign in</Link> : 
-                        <a href="#" onClick={logout}>Logout</a> }
+                        <a onClick={logout}>Logout</a> }
                     </li> 
                 </ul>
             </nav>

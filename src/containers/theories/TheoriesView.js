@@ -9,6 +9,7 @@ import {fetchUser, updateUser} from '../../store/actions/user';
 class TheoriesView extends Component {
     state = {
         likedTheories: [],
+        showPopular: false,
     }
 
     componentWillMount() {
@@ -29,6 +30,7 @@ class TheoriesView extends Component {
 
     render() {
         const { loggedIn, theories } = this.props;
+        const clickHandler = (showPopular) => this.setState({showPopular});        
 
         const updateUsersLiked = (theoryId) => {
             this.setState(previousState => ({
@@ -40,6 +42,8 @@ class TheoriesView extends Component {
                     theories={theories} 
                     loggedIn={loggedIn} 
                     updateUsersLiked={updateUsersLiked}
+                    showPopular={clickHandler}
+                    showNewest={!this.state.showPopular}
                 />
     }
 }

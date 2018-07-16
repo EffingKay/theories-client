@@ -2,9 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Aux from '../../utils/Aux';
 import TheoryView from '../../containers/theories/TheoryView';
-import Sansa from '../../assets/images/03.png';
 import Brienne from '../../assets/images/04.png';
-import Jamie from '../../assets/images/05.png';
 
 const Theories = (props) => {
     const theories = props.theories
@@ -18,17 +16,31 @@ const Theories = (props) => {
             updateUsersLiked={props.updateUsersLiked} /> )
     : (
         <div className="loader--heads">
-            {/* <div><img className="loader--head" src={Sansa} /></div>
-            <div><img className="loader--head" src={Jamie} /></div> */}
-            <div><img className="loader--head" src={Brienne} /></div>
+            <div><img className="loader--head" src={Brienne} alt="loader" /></div>
         </div>
     );
+
+    let popularTheoriesSorted = (props.theories) ? Object.keys(props.theories).sort(function(a,b){return props.theories[b].upvotes-props.theories[a].upvotes}) : [];
     
+    let popularTheoriesArray = (popularTheoriesSorted.map(key => props.theories[key]));
+    
+    let popularTheories = popularTheoriesArray.map(key => {
+        return <TheoryView 
+                    key={key._id}
+                    content={key.content}
+                    upvotes={key.upvotes} 
+                    theoryId={key._id} 
+                    loggedIn={props.loggedIn} 
+                    updateUsersLiked={props.updateUsersLiked} /> 
+    });
+        
     return (
         <Aux>
             <h1>GoT final season predictions?<br/>
             The less likely, the better.</h1>
-            {theories}
+            <button className="theories-buttons" onClick={() => props.showPopular(false)}>newest</button>
+            <button className="theories-buttons" onClick={() => props.showPopular(true)}>most popular</button>
+            {props.showNewest ? theories : popularTheories}
         </Aux>
     )
 }

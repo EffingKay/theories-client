@@ -33,7 +33,7 @@ class AppView extends Component {
                             <Route exact path='/' component={TheoriesView} />
                             <Route path='/login' component={LoginFormView} />
                             <Route path='/register' component={RegisterFormView} />
-                            <PrivateRoute path='/add-theory' component={TheoryNewView} />
+                            <Route path='/add-theory' component={TheoryNewView} />
                             <PrivateRoute path='/profile' component={UserView} />
                             <Route path="/info-and-legal" component={SiteInfo} />
                             <Route path="/privacy" component={Privacy} />

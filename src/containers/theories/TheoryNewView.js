@@ -25,7 +25,19 @@ class TheoryNew extends Component {
                 postTheory(this.state)
                     .then(() => {
                         fetchTheories();
-                        this.props.history.push('/theories')
+                        this.props.history.push('/theories');
+                    })
+                    .then(() => {
+                        if (process.env.NODE_ENV !== 'development') {
+                            const status = this.state.content.length < 280 ? this.state.content : `${this.state.content.slice(0, 275)}...`;
+                            fetch(`https://lucky-wanderer.glitch.me/new-theory`, {
+                                method: 'post',
+                                headers: { 'Content-Type' : 'application/json' },
+                                body: JSON.stringify({status})
+                              }).catch((err) => {
+                                console.error(err)
+                              });
+                        }
                     })
                     .catch(err => console.log(err))
             }   

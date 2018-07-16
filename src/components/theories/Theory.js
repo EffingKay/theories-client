@@ -11,15 +11,16 @@ const Theory = (props) => {
     } else {
         likesText = 'likes'
     }
-    const twitterContent = props.content.length < 200 ? props.content : `${props.content.slice(0, 200)}...`;
+    const twitterContent = props.content.length < 260 ? props.content : `${props.content.slice(0, 260)}...`;
     const twitterUrl = `https://twitter.com/intent/tweet?&text=${twitterContent}&via=effingkay`;
     const twitterButton = <a 
         className="twitter" 
         href={twitterUrl}
         target="_blank" 
+        rel="noopener noreferrer"
         title="Tweet" 
         onClick={() => {
-            window.open('https://twitter.com/intent/tweet?text=' + encodeURIComponent(`${twitterContent} via @EffingKay`));
+            window.open('https://twitter.com/intent/tweet?text=' + encodeURIComponent(`${twitterContent} via @got__theory`));
             return false;
         }}>
             <img alt="Tweet" src={twitterIcon} />
